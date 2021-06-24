@@ -1,54 +1,68 @@
- _ASCII_TABLE_by_0xB0BAFE77_________________________________________________________________________________________________________________________SORTED_BY_TYPE__ 
-|  CONTROL CHARS                                        |  UPPERCASE A-Z [\]^_`                                |  LOWERCASE a-z {|}~                                |
-|-------------------------------------------------------+------------------------------------------------------+----------------------------------------------------|
-|  DEC  OCT  HEX   BIN       Sym  Descript              |  DEC  OCT  HEX   BIN       Sym  Descript             |  DEC  OCT  HEX   BIN       Sym  Descript           |
-|  0    0    0x00  00000000  NUL  Null                  |  65   101  0x41  01000001  A    Uppercase A          |  97   141  0x61  01100001  a    Lowercase a        |
-|  1    1    0x01  00000001  SOH  Heading Start         |  66   102  0x42  01000010  B    Uppercase B          |  98   142  0x62  01100010  b    Lowercase b        |
-|  2    2    0x02  00000010  STX  Text Start            |  67   103  0x43  01000011  C    Uppercase C          |  99   143  0x63  01100011  c    Lowercase c        |
-|  3    3    0x03  00000011  ETX  Text End              |  68   104  0x44  01000100  D    Uppercase D          |  100  144  0x64  01100100  d    Lowercase d        |
-|  4    4    0x04  00000100  EOT  Transmission End      |  69   105  0x45  01000101  E    Uppercase E          |  101  145  0x65  01100101  e    Lowercase e        |
-|  5    5    0x05  00000101  ENQ  Enquiry               |  70   106  0x46  01000110  F    Uppercase F          |  102  146  0x66  01100110  f    Lowercase f        |
-|  6    6    0x06  00000110  ACK  Acknowledge           |  71   107  0x47  01000111  G    Uppercase G          |  103  147  0x67  01100111  g    Lowercase g        |
-|  7    7    0x07  00000111  BEL  Bell                  |  72   110  0x48  01001000  H    Uppercase H          |  104  150  0x68  01101000  h    Lowercase h        |
-|  8    10   0x08  00001000  BS   Backspace             |  73   111  0x49  01001001  I    Uppercase I          |  105  151  0x69  01101001  i    Lowercase i        |
-|  9    11   0x09  00001001  HT   Horizontal Tab        |  74   112  0x4A  01001010  J    Uppercase J          |  106  152  0x6A  01101010  j    Lowercase j        |
-|  10   12   0x0A  00001010  LF   Line Feed             |  75   113  0x4B  01001011  K    Uppercase K          |  107  153  0x6B  01101011  k    Lowercase k        |
-|  11   13   0x0B  00001011  VT   Vertical Tab          |  76   114  0x4C  01001100  L    Uppercase L          |  108  154  0x6C  01101100  l    Lowercase l        |
-|  12   14   0x0C  00001100  FF   Form Feed             |  77   115  0x4D  01001101  M    Uppercase M          |  109  155  0x6D  01101101  m    Lowercase m        |
-|  13   15   0x0D  00001101  CR   Carriage Return       |  78   116  0x4E  01001110  N    Uppercase N          |  110  156  0x6E  01101110  n    Lowercase n        |
-|  14   16   0x0E  00001110  SO   Shift Out/X-On        |  79   117  0x4F  01001111  O    Uppercase O          |  111  157  0x6F  01101111  o    Lowercase o        |
-|  15   17   0x0F  00001111  SI   Shift In/X-Off        |  80   120  0x50  01010000  P    Uppercase P          |  112  160  0x70  01110000  p    Lowercase p        |
-|  16   20   0x10  00010000  DLE  Data Line Escape      |  81   121  0x51  01010001  Q    Uppercase Q          |  113  161  0x71  01110001  q    Lowercase q        |
-|  17   21   0x11  00010001  DC1  Device Control 1      |  82   122  0x52  01010010  R    Uppercase R          |  114  162  0x72  01110010  r    Lowercase r        |
-|  18   22   0x12  00010010  DC2  Device Control 2      |  83   123  0x53  01010011  S    Uppercase S          |  115  163  0x73  01110011  s    Lowercase s        |
-|  19   23   0x13  00010011  DC3  Device Control 3      |  84   124  0x54  01010100  T    Uppercase T          |  116  164  0x74  01110100  t    Lowercase t        |
-|  20   24   0x14  00010100  DC4  Device Control 4      |  85   125  0x55  01010101  U    Uppercase U          |  117  165  0x75  01110101  u    Lowercase u        |
-|  21   25   0x15  00010101  NAK  Negative Acknowledge  |  86   126  0x56  01010110  V    Uppercase V          |  118  166  0x76  01110110  v    Lowercase v        |
-|  22   26   0x16  00010110  SYN  Synchronous Idle      |  87   127  0x57  01010111  W    Uppercase W          |  119  167  0x77  01110111  w    Lowercase w        |
-|  23   27   0x17  00010111  ETB  Transmit Block End    |  88   130  0x58  01011000  X    Uppercase X          |  120  170  0x78  01111000  x    Lowercase x        |
-|  24   30   0x18  00011000  CAN  Cancel                |  89   131  0x59  01011001  Y    Uppercase Y          |  121  171  0x79  01111001  y    Lowercase y        |
-|  25   31   0x19  00011001  EM   End of Medium         |  90   132  0x5A  01011010  Z    Uppercase Z          |  122  172  0x7A  01111010  z    Lowercase z        |
-|  26   32   0x1A  00011010  SUB  Substitute            |------------------------------------------------------+----------------------------------------------------|
-|  27   33   0x1B  00011011  ESC  Escape                |  SYMBOLS ! # $ % & ' ( ) * + , - . /                 |  SYMBOLS : ; < = > ? @ [ \ ] ^ _ ` { | } ~         |
-|  28   34   0x1C  00011100  FS   File Separator        |------------------------------------------------------+----------------------------------------------------|
-|  29   35   0x1D  00011101  GS   Group Separator       |  DEC  OCT  HEX   BIN       Sym  Descript             |  58   072  0x3A  00111010  :    Colon              |
-|  30   36   0x1E  00011110  RS   Record Separator      |  32   40   0x20  10000000       Space                |  59   073  0x3B  00111011  ;    Semicolon          |
-|  31   37   0x1F  00011111  US   Unit Separator        |  33   041  0x21  00100001  !    Exclamation mark     |  60   074  0x3C  00111100  <    &lt; Less than     |
-|-------------------------------------------------------+  35   043  0x23  00100011  #    Number               |  61   075  0x3D  00111101  =    Equals             |
-|  NUMBERS 0-9                                          |  36   044  0x24  00100100  $    Dollar               |  62   076  0x3E  00111110  >    &gt; Greater than  |
-|-------------------------------------------------------+  37   045  0x25  00100101  %    Percent sign         |  63   077  0x3F  00111111  ?    Question mark      |
-|  DEC  OCT  HEX   BIN       Sym  Descript              |  38   046  0x26  00100110  &    &amp; Ampersand      |  64   100  0x40  01000000  @    At symbol          |
-|  48   060  0x30  00110000  0    Zero                  |  39   047  0x27  00100111  '    Single quote         |                                                    |
-|  49   061  0x31  00110001  1    One                   |  40   050  0x28  00101000  (    Open parenthesis     |  91   133  0x5B  01011011  [    Open bracket       |
-|  50   062  0x32  00110010  2    Two                   |  41   051  0x29  00101001  )    Close parenthesis    |  92   134  0x5C  01011100  \    Backslash          |
-|  51   063  0x33  00110011  3    Three                 |  42   052  0x2A  00101010  *    Asterisk             |  93   135  0x5D  01011101  ]    Close bracket      |
-|  52   064  0x34  00110100  4    Four                  |  43   053  0x2B  00101011  +    Plus                 |  94   136  0x5E  01011110  ^    Caret/circumflex   |
-|  53   065  0x35  00110101  5    Five                  |  44   054  0x2C  00101100  ,    Comma                |  95   137  0x5F  01011111  _    Underscore         |
-|  54   066  0x36  00110110  6    Six                   |  45   055  0x2D  00101101  -    Hyphen               |  96   140  0x60  01100000  `    Grave accent       |
-|  55   067  0x37  00110111  7    Seven                 |  46   056  0x2E  00101110  .    Period/dot           |                                                    |
-|  56   070  0x38  00111000  8    Eight                 |  47   057  0x2F  00101111  /    Slash/divide/ironic  |  123  173  0x7B  01111011  {    Opening brace      |
-|  57   071  0x39  00111001  9    Nine                  |                                                      |  124  174  0x7C  01111100  |    Vertical bar       |
-|                                                       |                                                      |  125  175  0x7D  01111101  }    Closing brace      |
-|                                                       |                                                      |  126  176  0x7E  01111110  ~    Equivalency/tilde  |
-|                                                       |                                                      |  127  177  0x7F  01111111       Delete             |
-|_______________________________________________________|______________________________________________________|____________________________________________________|
+ 
+  _ASCII_TABLE_EXTENDED_by_0xB0BAFE77__________________________________________________________________________________________________________ 
+ |  DEC  OCT  HEX   BIN       Symol  Descript                           |  DEC  OCT  HEX   BIN       Symol  Descript                           |
+ |  128  200  0x80  10000000  €      Euro sign                          |  192  300  0xC0  11000000  À      Latin A with grave                 |
+ |  129  201  0x81  10000001                                            |  193  301  0xC1  11000001  Á      Latin A with acute                 |
+ |  130  202  0x82  10000010  ‚      Single low-9 quote mark            |  194  302  0xC2  11000010  Â      Latin A with circumflex            |
+ |  131  203  0x83  10000011  ƒ      Latin small f with hook            |  195  303  0xC3  11000011  Ã      Latin A with tilde                 |
+ |  132  204  0x84  10000100  „      Double low-9 quote mark            |  196  304  0xC4  11000100  Ä      Latin A with diaeresis             |
+ |  133  205  0x85  10000101  …      Horizontal ellipsis                |  197  305  0xC5  11000101  Å      Latin A with ring above            |
+ |  134  206  0x86  10000110  †      Dagger                             |  198  306  0xC6  11000110  Æ      Latin AE                           |
+ |  135  207  0x87  10000111  ‡      Double dagger                      |  199  307  0xC7  11000111  Ç      Latin C with cedilla               |
+ |  136  210  0x88  10001000  ˆ      Modifier letter circumflex accent  |  200  310  0xC8  11001000  È      Latin E with grave                 |
+ |  137  211  0x89  10001001  ‰      Per mille sign                     |  201  311  0xC9  11001001  É      Latin E with acute                 |
+ |  138  212  0x8A  10001010  Š      Latin S with caron                 |  202  312  0xCA  11001010  Ê      Latin E with circumflex            |
+ |  139  213  0x8B  10001011  ‹      Single left-pointing angle quote   |  203  313  0xCB  11001011  Ë      Latin E with diaeresis             |
+ |  140  214  0x8C  10001100  Œ      Latin capital ligature OE          |  204  314  0xCC  11001100  Ì      Latin I with grave                 |
+ |  141  215  0x8D  10001101                                            |  205  315  0xCD  11001101  Í      Latin I with acute                 |
+ |  142  216  0x8E  10001110  Ž      Latin Z with caron                 |  206  316  0xCE  11001110  Î      Latin I with circumflex            |
+ |  143  217  0x8F  10001111                                            |  207  317  0xCF  11001111  Ï      Latin I with diaeresis             |
+ |  144  220  0x90  10010000                                            |  208  320  0xD0  11010000  Ð      Latin ETH                          |
+ |  145  221  0x91  10010001  ‘      Left single quote mark             |  209  321  0xD1  11010001  Ñ      Latin N with tilde                 |
+ |  146  222  0x92  10010010  ’      Right single quote mark            |  210  322  0xD2  11010010  Ò      Latin O with grave                 |
+ |  147  223  0x93  10010011  “      Left double quote mark             |  211  323  0xD3  11010011  Ó      Latin O with acute                 |
+ |  148  224  0x94  10010100  ”      Right double quote mark            |  212  324  0xD4  11010100  Ô      Latin O with circumflex            |
+ |  149  225  0x95  10010101  •      Bullet                             |  213  325  0xD5  11010101  Õ      Latin O with tilde                 |
+ |  150  226  0x96  10010110  –      En dash                            |  214  326  0xD6  11010110  Ö      Latin O with diaeresis             |
+ |  151  227  0x97  10010111  —      Em dash                            |  215  327  0xD7  11010111  ×      Multiplication sign                |
+ |  152  230  0x98  10011000  ˜      Small tilde                        |  216  330  0xD8  11011000  Ø      Latin O with slash                 |
+ |  153  231  0x99  10011001  ™      Trade mark sign                    |  217  331  0xD9  11011001  Ù      Latin U with grave                 |
+ |  154  232  0x9A  10011010  š      Latin S with caron                 |  218  332  0xDA  11011010  Ú      Latin U with acute                 |
+ |  155  233  0x9B  10011011  ›      Single right angle quote mark      |  219  333  0xDB  11011011  Û      Latin U with circumflex            |
+ |  156  234  0x9C  10011100  œ      Latin small ligature oe            |  220  334  0xDC  11011100  Ü      Latin U with diaeresis             |
+ |  157  235  0x9D  10011101                                            |  221  335  0xDD  11011101  Ý      Latin Y with acute                 |
+ |  158  236  0x9E  10011110  ž      Latin z with caron                 |  222  336  0xDE  11011110  Þ      Latin THORN                        |
+ |  159  237  0x9F  10011111  Ÿ      Latin Y with diaeresis             |  223  337  0xDF  11011111  ß      Latin sharp s - ess-zed            |
+ |  160  240  0xA0  10100000         Non-breaking space                 |  224  340  0xE0  11100000  à      Latin a with grave                 |
+ |  161  241  0xA1  10100001  ¡      Inverted exclamation mark          |  225  341  0xE1  11100001  á      Latin a with acute                 |
+ |  162  242  0xA2  10100010  ¢      Cent sign                          |  226  342  0xE2  11100010  â      Latin a with circumflex            |
+ |  163  243  0xA3  10100011  £      Pound sign                         |  227  343  0xE3  11100011  ã      Latin a with tilde                 |
+ |  164  244  0xA4  10100100  ¤      Currency sign                      |  228  344  0xE4  11100100  ä      Latin a with diaeresis             |
+ |  165  245  0xA5  10100101  ¥      Yen sign                           |  229  345  0xE5  11100101  å      Latin a with ring above            |
+ |  166  246  0xA6  10100110  ¦      Pipe, Broken vertical bar          |  230  346  0xE6  11100110  æ      Latin ae                           |
+ |  167  247  0xA7  10100111  §      Section sign                       |  231  347  0xE7  11100111  ç      Latin c with cedilla               |
+ |  168  250  0xA8  10101000  ¨      Spacing diaeresis - umlaut         |  232  350  0xE8  11101000  è      Latin e with grave                 |
+ |  169  251  0xA9  10101001  ©      Copyright sign                     |  233  351  0xE9  11101001  é      Latin e with acute                 |
+ |  170  252  0xAA  10101010  ª      Feminine ordinal indicator         |  234  352  0xEA  11101010  ê      Latin e with circumflex            |
+ |  171  253  0xAB  10101011  «      Left double angle quotes           |  235  353  0xEB  11101011  ë      Latin e with diaeresis             |
+ |  172  254  0xAC  10101100  ¬      Not sign                           |  236  354  0xEC  11101100  ì      Latin i with grave                 |
+ |  173  255  0xAD  10101101         Soft hyphen                        |  237  355  0xED  11101101  í      Latin i with acute                 |
+ |  174  256  0xAE  10101110  ®      Registered trade mark sign         |  238  356  0xEE  11101110  î      Latin i with circumflex            |
+ |  175  257  0xAF  10101111  ¯      Spacing macron - overline          |  239  357  0xEF  11101111  ï      Latin i with diaeresis             |
+ |  176  260  0xB0  10110000  °      Degree sign                        |  240  360  0xF0  11110000  ð      Latin eth                          |
+ |  177  261  0xB1  10110001  ±      Plus-or-minus sign                 |  241  361  0xF1  11110001  ñ      Latin n with tilde                 |
+ |  178  262  0xB2  10110010  ²      Superscript two - squared          |  242  362  0xF2  11110010  ò      Latin o with grave                 |
+ |  179  263  0xB3  10110011  ³      Superscript three - cubed          |  243  363  0xF3  11110011  ó      Latin o with acute                 |
+ |  180  264  0xB4  10110100  ´      Acute accent - spacing acute       |  244  364  0xF4  11110100  ô      Latin o with circumflex            |
+ |  181  265  0xB5  10110101  µ      Micro sign                         |  245  365  0xF5  11110101  õ      Latin o with tilde                 |
+ |  182  266  0xB6  10110110  ¶      Pilcrow sign - paragraph sign      |  246  366  0xF6  11110110  ö      Latin o with diaeresis             |
+ |  183  267  0xB7  10110111  ·      Middle dot - Georgian comma        |  247  367  0xF7  11110111  ÷      Division sign                      |
+ |  184  270  0xB8  10111000  ¸      Spacing cedilla                    |  248  370  0xF8  11111000  ø      Latin o with slash                 |
+ |  185  271  0xB9  10111001  ¹      Superscript one                    |  249  371  0xF9  11111001  ù      Latin u with grave                 |
+ |  186  272  0xBA  10111010  º      Masculine ordinal indicator        |  250  372  0xFA  11111010  ú      Latin u with acute                 |
+ |  187  273  0xBB  10111011  »      Right double angle quotes          |  251  373  0xFB  11111011  û      Latin u with circumflex            |
+ |  188  274  0xBC  10111100  ¼      Fraction one quarter               |  252  374  0xFC  11111100  ü      Latin u with diaeresis             |
+ |  189  275  0xBD  10111101  ½      Fraction one half                  |  253  375  0xFD  11111101  ý      Latin y with acute                 |
+ |  190  276  0xBE  10111110  ¾      Fraction three quarters            |  254  376  0xFE  11111110  þ      Latin thorn                        |
+ |  191  277  0xBF  10111111  ¿      Inverted question mark             |  255  377  0xFF  11111111  ÿ      Latin y with diaeresis             |
+ |______________________________________________________________________|______________________________________________________________________|
