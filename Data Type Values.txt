@@ -1,0 +1,13 @@
+Name            Bytes               Extra:                  
+=====================================================       
+AStr            1                   ANSI str                
+WStr            2                   Unicode (wide) str      
+Str             Uni ? WStr : AStr                           
+Int64           8                                           
+Int             4                                           
+BOOL            4                   =Int                    
+Short           2                                           
+Char            1                                           
+Float           4                                           
+Double          8                                           
+Ptr             64Bit ? 8 : 4                               
