@@ -2,16 +2,15 @@
 #SingleInstance Force
 #Warn
 #NoEnv
-#MaxHotkeysPerInterval 99000000
-#HotkeyInterval 99000000
 #KeyHistory 0
-ListLines Off
 Process, Priority, , A
 SetBatchLines, -1
+ListLines, 0
+SetTitleMatchMode, 2
+SetTitleMatchMode, Fast
 SetKeyDelay, -1, -1
 SetMouseDelay, -1
-SetDefaultMouseSpeed, 0
-listin
+SetWinDelay, 0
 
 optimize.assignment()
 optimize.if_vs_ternary()
