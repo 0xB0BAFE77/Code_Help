@@ -11,9 +11,9 @@ SetBatchLines, -1
 SetKeyDelay, -1, -1
 SetMouseDelay, -1
 SetDefaultMouseSpeed, 0
+listin
 
-
-;optimize.assignment()
+optimize.assignment()
 optimize.if_vs_ternary()
 ExitApp
 
@@ -23,18 +23,19 @@ Class optimize
     assignment()
     {
         ; Assignment performance test from fastest to slowest
-        ; Iterations: 10000000 
-        ; Test: Assign a float, int, neg float, neg int, 0, word, var
-        ; := operator, no commas    = 14.64 seconds
-        ; := operator, with commas  = 11.01 seconds
-        ; = operator, no commas     =  9.11 seconds
-        ; = operator, with commas   =  2.93 seconds
+        ; Iterations: 10,000,000
+        ; Specifics: Assign a float, int, neg float, neg int, 0, word, var
+        ; Results:
+        ; Assign (:=) no commas   = 5.41 seconds
+        ; Assign (:=) with commas = 3.48 seconds
+        ; Equals (=) no commas    = 3.39 seconds
+        ; Equals (=) with commas  = 0.96 seconds
         
         str := ""
-        qpx(1)
         iterations := 10000000
         four := 4
         
+        qpx(1)
         Loop, % iterations
         {
             a := -2.2
@@ -45,7 +46,7 @@ Class optimize
             f := "Three"
             g := four
         }
-        str .= "`nAssign op (:=), no commas: " qpx()
+        str .= "`nAssign (:=), no commas: " qpx()
         
         qpx(1)
         Loop, % iterations
@@ -58,7 +59,7 @@ Class optimize
             ,f := "Three"
             ,g := four
         }
-        str .= "`nAssign op (:=), with commas: " qpx()
+        str .= "`nAssign (:=), with commas: " qpx()
         
         qpx(1)
         Loop, % iterations
@@ -93,13 +94,13 @@ Class optimize
     
     if_vs_ternary()
     {
-        ; If vs ternary
+        ; Test: If vs ternary
         ; Iterations: 10000000
-        ; Test: Increment A by 1 if true and B by 1 if false
-        ; If statement      = 8.15
-        ; Ternary           = 5.50
-        ; Ternary w/ commas = 4.48
-        
+        ; Specifics: Increment A by 1 if true and B by 1 if false
+        ; Results:
+        ; If statement      = 2.51 seconds
+        ; Ternary           = 1.85 seconds
+        ; Ternary w/ commas = 1.52 seconds
         iterations := 10000000
         str := ""
         a := 0
@@ -142,12 +143,62 @@ Class optimize
     
     evauluation()
     {
-        ; If vs ternary
+        ; Test: Different evaluation types
         ; Iterations: 10000000
-        ; Test: Increment A by 1 if true and B by 1 if false
-        ; If statement      = 8.15
-        ; Ternary           = 5.50
-        ; Ternary w/ commas = 4.48
+        ; Specifics: (eval), (x = vaule), !
+        ; Results:
+        ; 
+        ; If (true)
+        ; If (
+        ; If (x = y)
+        ; If (x !=y )
+        iterations := 10000000
+        str := ""
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            
+        }
+        str .= "`n" qpx()
+        
+        qpx(1)
+        Loop, % iterations
+        {
+        }
+        str .= "`n" qpx()
+        
+        qpx(1)
+        Loop, % iterations
+        {
+        }
+        str .= "`n" qpx()
+        
+        qpx(1)
+        Loop, % iterations
+        {
+        }
+        str .= "`n" qpx()
+        
+        Return
+    }
+    
+    _template()
+    {
+        ; Test: 
+        ; Iterations: 10000000
+        ; Specifics: 
+        ; Results:
+        ; 
+        iterations := 10000000
+        str := ""
+        
+        qpx(1)
+        Loop, % iterations
+        {
+        }
+        str .= "`n" qpx()
+        
         Return
     }
 }
