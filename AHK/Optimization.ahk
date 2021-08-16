@@ -15,10 +15,12 @@ SetWinDelay, 0
 ;optimize.assignment()
 ;optimize.if_vs_ternary()
 ;optimize.evauluation()
-;optimize.inc_dec()
-optimize.concat()
-
+optimize.inc_dec()
+;optimize.concat()
+;optimize.inline_assign()
 ExitApp
+
+!Escape::ExitApp
 
 
 Class optimize
@@ -29,7 +31,7 @@ Class optimize
         ; Iterations: 1,000,000,000
         ; Specifics: Assign a float, int, neg float, neg int, 0, word, var
         ; Results:
-        ; Equals (=) with commas  = 88.88 seconds
+        ; Equals (=) with commas  =  88.88 seconds
         ; Equals (=) no commas    = 206.53 seconds
         ; Assign (:=) with commas = 301.58 seconds
         ; Assign (:=) no commas   = 413.59 seconds
@@ -157,15 +159,18 @@ Class optimize
         ; Iterations: 1,000,000,000
         ; Specifics: True: (x) = False: (!x) != <> GTLT: > < >= <=
         ; Results:
-        ;      (x) = 61.38
-        ;  (x = y) = 80.45
-        ;     (!x) = 69.99 
-        ; (x != y) = 84.04
-        ; (x <> y) = 97.87
-        ;  (x < y) = 92.00
+        ; Equal
+        ;      (x) =  61.38
+        ;  (x = y) =  80.45
+        ; Not Equal
+        ;     (!x) =  69.99 
+        ; (x != y) =  84.04
+        ; (x <> y) =  97.87
+        ; Greater/Less Than
+        ; (x <= y) =  84.38
+        ; (x >= y) =  85.37
+        ;  (x < y) =  92.00
         ;  (x > y) = 101.37
-        ; (x >= y) = 85.37
-        ; (x <= y) = 84.38
         
         iterations := 1000000000
         str := ""
@@ -246,14 +251,16 @@ Class optimize
         ; Iterations: 1,000,000,000
         ; Specifics: a+1 a+x a++ ++a a-1 a-x a-- --a
         ; Results: 
-        ; a+1 = 65.61
-        ; a+x = 66.62
-        ; a++ = 47.69
-        ; ++a = 47.18
-        ; a-1 = 78.18
-        ; a-x = 80.82
-        ; a-- = 47.57
-        ; --a = 47.25
+        ; Increment
+        ; ++a = 56.95
+        ; a++ = 56.96
+        ; a+1 = 93.01
+        ; a+x = 99.61
+        ; Decrement
+        ; --a = 56.25
+        ; a-- = 56.56
+        ; a-1 = 94.19
+        ; a-x = 99.43
         
         iterations := 1000000000
         str := ""
@@ -318,8 +325,8 @@ Class optimize
         ; Iterations: 100,000
         ; Specifics: Append Abc123 to a string 1000 times, with/without memory allocation
         ; Results:
-        ; VarSetCapacity()     = 84.74 seconds
-        ; Deafult capacity     = 133.99 seconds
+        ; VarSetCapacity() =  84.74 seconds
+        ; Deafult capacity = 133.99 seconds
         iterations := 1000
         appends := 1000
         str := ""
@@ -348,6 +355,56 @@ Class optimize
         Return
     }
     
+    inline_assign()
+    {
+        ; Test: Assigning multiple variables on 1 line
+        ; Iterations: 1,000,000,000
+        ; Specifics: Assign and math 5 variables inline vs assigning then mathing
+        ; Results:
+        ; inline assign     = 323.85 seconds
+        ; multi-line assign = 381.05 seconds
+        ; multi-line equals =  87.12 seconds
+        
+        iterations := 1000000000
+        str := ""
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            var := ((a := 1) + (b := 2) + (c := 3) + (d := 4)) * (e := 5)
+        }
+        str .= "`nInline assign: " qpx()
+        
+        qpx(1)
+        Loop, % iterations
+        {
+             a := 1
+            ,b := 2
+            ,c := 3
+            ,d := 4
+            ,e := 5
+            ,var := (a + b + c + d) * e
+        }
+        str .= "`nMulti-line assign: " qpx()
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            ()
+            ,a = 1
+            ,b = 2
+            ,c = 3
+            ,d = 4
+            ,e = 5
+            ,var := (a + b + c + d) * e
+        }
+        str .= "`nMulti-line equals: " qpx()
+        
+        MsgBox, % str
+        
+        Return
+    }
+    
     _template()
     {
         ; Test: 
@@ -364,22 +421,15 @@ Class optimize
         }
         str .= "`n" qpx()
         
+        MsgBox, % str
+        
         Return
     }
     
     ;~ ; Loading DLL library vs not
-
-
-    ;~ ; Assigning multiple variables on 1 line
-    ;~ ; var := ((a := 1) + (b := 2) + (c := 3) + (d := 4)) * e)
-    ;~ ; vs
-    ;~ ;  a := 1
-    ;~ ; ,b := 2
-    ;~ ; ,c := 3
-    ;~ ; ,d := 4
-    ;~ ; ,e := 5
-    ;~ ; var := (a + b + c + d) * e
-
+    
+    ;~ ; Object assignment/calling methods.
+    ;~ ; InsertAt vs obj.index vs Pop vs etc...
 
     ;~ ; Function call cost vs gosub vs not using either
     ;~ ; f1(a, b)
@@ -402,9 +452,6 @@ Class optimize
     ;~ }
 }
 
-
-ExitApp
-*Escape::ExitApp
 
 ; qpx(1) starts it and qpx() stops timer and returns time
 qpx(N=0) {  ; Wrapper for QueryPerformanceCounter() by SKAN  | CD: 06/Dec/2009
