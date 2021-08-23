@@ -15,9 +15,10 @@ SetWinDelay, 0
 ;optimize.assignment()
 ;optimize.if_vs_ternary()
 ;optimize.evauluation()
-optimize.inc_dec()
+;optimize.inc_dec()
 ;optimize.concat()
 ;optimize.inline_assign()
+optimize.varvsnumputnumget()
 ExitApp
 
 !Escape::ExitApp
@@ -25,6 +26,97 @@ ExitApp
 
 Class optimize
 {
+    /*
+    new_test()
+    {
+        ; What it does
+        ; Iterations: 1,000,000
+        ; Specifics: How it does it
+        ; Results:
+        
+        str := ""
+        iterations := 1000000
+        four := 4
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            A_Index
+        }
+        str .= "" qpx()
+        ToolTip, % str
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            A_Index
+        }
+        str .= "`n" qpx()
+        
+        MsgBox, % str
+        Return
+    }
+    */
+    
+    varvsnumputnumget()
+    {
+        ; Test the speed difference between using variables and using NumPut/NumGet
+        ; Iterations: 100,000,000
+        ; Specifics: Save a number to a variable and then access it to do a math operation
+        ; Results:
+        ; Assignment operators with commas: 182.79
+        ; Assignment operators:             251.34
+        ; NumPut/NumGet with commas:        370.03
+        ; NumPut/NumGet:                    481.18
+        
+        str := ""
+        iterations := 1000000000
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            a := 1000
+            b := a
+            c := b + b
+        }
+        str .= "Assignment operators: " qpx()
+        ToolTip, % str
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            VarSetCapacity(a, 4)
+            NumPut(1000, a, 0, "Int")
+            b := NumGet(a, 0, "Int")
+            c := b + b
+        }
+        str .= "`nNumPut/NumGet: " qpx()
+        ToolTip, % str
+        
+        qpx(1)
+        Loop, % iterations
+        {
+             a := 1000
+            ,b := a
+            ,c := b + b
+        }
+        str .= "`nAssignment operators with commas: " qpx()
+        ToolTip, % str
+        
+        qpx(1)
+        Loop, % iterations
+        {
+             VarSetCapacity(a, 4)
+            ,NumPut(1000, a, 0, "Int")
+            ,b := NumGet(a, 0, "Int")
+            ,c := b + b
+        }
+        str .= "`nNumPut/NumGet with commas" qpx()
+        
+        MsgBox, % str
+        Return
+    }
+    
     assignment()
     {
         ; Assignment performance test from fastest to slowest
@@ -51,8 +143,8 @@ Class optimize
             f := "Three"
             g := four
         }
-        str .= "`nAssign (:=), no commas: " qpx()
-        ToolTip, done with := no comma
+        str .= "Assign (:=), no commas: " qpx()
+        ToolTip, % str
         
         qpx(1)
         Loop, % iterations
@@ -66,7 +158,7 @@ Class optimize
             ,g := four
         }
         str .= "`nAssign (:=), with commas: " qpx()
-        ToolTip, done with := and comma
+        ToolTip, % str
         
         qpx(1)
         Loop, % iterations
@@ -80,7 +172,7 @@ Class optimize
             g = %four%
         }
         str .= "`nEquality op (=), no commas: " qpx()
-        ToolTip, done with = no comma
+        ToolTip, % str
         
         qpx(1)
         Loop, % iterations
@@ -95,7 +187,6 @@ Class optimize
             ,g = %four%
         }
         str .= "`nEquality op (=), with commas: " qpx()
-        ToolTip, done with = with comma
         
         MsgBox, % str
     }
@@ -361,9 +452,9 @@ Class optimize
         ; Iterations: 1,000,000,000
         ; Specifics: Assign and math 5 variables inline vs assigning then mathing
         ; Results:
+        ; multi-line equals =  87.12 seconds
         ; inline assign     = 323.85 seconds
         ; multi-line assign = 381.05 seconds
-        ; multi-line equals =  87.12 seconds
         
         iterations := 1000000000
         str := ""
