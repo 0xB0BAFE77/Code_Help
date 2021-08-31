@@ -18,7 +18,9 @@ SetWinDelay, 0
 ;optimize.inc_dec()
 ;optimize.concat()
 ;optimize.inline_assign()
-optimize.varvsnumputnumget()
+;optimize.varsetcapicty_fill_nofill()
+;optimize.assign_vs_numput()
+;optimize.var_vs_numget()
 ExitApp
 
 !Escape::ExitApp
@@ -58,65 +60,132 @@ Class optimize
     }
     */
     
-    varvsnumputnumget()
+    var_vs_numget()
     {
-        ; Test the speed difference between using variables and using NumPut/NumGet
+        ; Check how much faster getting a var is compared to NumGet
         ; Iterations: 100,000,000
-        ; Specifics: Save a number to a variable and then access it to do a math operation
+        ; Specifics: Get number from  predefined variable
         ; Results:
-        ; Assignment operators with commas: 182.79
-        ; Assignment operators:             251.34
-        ; NumPut/NumGet with commas:        370.03
-        ; NumPut/NumGet:                    481.18
+        ; Get Var:  8.646610
+        ; NumGet:  13.262087
         
         str := ""
-        iterations := 1000000000
+        iterations := 100000000
+        four := 4
         
+        a := 1
         qpx(1)
         Loop, % iterations
         {
-            a := 1000
             b := a
-            c := b + b
         }
-        str .= "Assignment operators: " qpx()
+        str .= "Get var: " qpx()
         ToolTip, % str
         
+        VarSetCapacity(a, 4, 0x1)
         qpx(1)
         Loop, % iterations
         {
-            VarSetCapacity(a, 4)
-            NumPut(1000, a, 0, "Int")
             b := NumGet(a, 0, "Int")
-            c := b + b
         }
-        str .= "`nNumPut/NumGet: " qpx()
-        ToolTip, % str
-        
-        qpx(1)
-        Loop, % iterations
-        {
-             a := 1000
-            ,b := a
-            ,c := b + b
-        }
-        str .= "`nAssignment operators with commas: " qpx()
-        ToolTip, % str
-        
-        qpx(1)
-        Loop, % iterations
-        {
-             VarSetCapacity(a, 4)
-            ,NumPut(1000, a, 0, "Int")
-            ,b := NumGet(a, 0, "Int")
-            ,c := b + b
-        }
-        str .= "`nNumPut/NumGet with commas" qpx()
+        str .= "`nNumGet: " qpx()
         
         MsgBox, % str
         Return
     }
     
+    assign_vs_numput()
+    {
+        ; Check how much faster assigning by var is compared to numput
+        ; Iterations: 100,000,000
+        ; Specifics: Store 1 to variable using different methods.
+        ; Results:
+        ; Set Var:  7.964768
+        ; NumPut:  11.830504
+        
+        str := ""
+        iterations := 100000000
+        four := 4
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            a := 1
+        }
+        str .= "Assignment: " qpx()
+        ToolTip, % str
+        
+        qpx(1)
+        a := ""
+        Loop, % iterations
+        {
+            NumPut(1, a, 0, "Int")
+        }
+        str .= "`nNumPut: " qpx()
+        
+        MsgBox, % str
+        Return
+    }
+    
+    varsetcapicty_fill_nofill()
+    {
+        ; Testing time difference when using fill bytes in varsetcapacity
+        ; Iterations: 1,000,000,000
+        ; Specifics: Various sizes. With/without fill bytes. Different fill nums.
+        ; Results: 
+        ;    8 bytes, no fill, BLANK:     82.465528
+        ;    8 bytes,    fill,     0:    119.211875
+        ;    8 bytes,    fill,   128:    119.255844
+        ; 1024 bytes, no fill, BLANK:     82.682783
+        ; 1024 bytes, no fill,     0:    119.402025
+        ; 1024 bytes, no fill,   128:    119.348265
+        
+        str := ""
+        iterations := 1000000000
+        four := 4
+        
+        qpx(1)
+        Loop, % iterations
+            VarSetCapacity(struct, 8)
+        str .= "8 bytes, no fill: " qpx()
+        ToolTip, % str
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            VarSetCapacity(struct, 8, 0)
+        }
+        str .= "`n8 bytes, fill, 0: " qpx()
+        
+        qpx(1)
+        Loop, % iterations
+        {
+            VarSetCapacity(struct, 8, 128)
+        }
+        str .= "`n8 bytes, fill, 128: " qpx()
+        
+        qpx(1)
+        Loop, % iterations
+            VarSetCapacity(struct, 1024)
+        str .= "`n8 bytes, no fill: " qpx()
+        ToolTip, % str
+        
+        qpx(1)
+        Loop, % iterations
+            VarSetCapacity(struct, 1024, 0)
+        str .= "`n8 bytes, no fill: " qpx()
+        ToolTip, % str
+        
+        qpx(1)
+        Loop, % iterations
+            VarSetCapacity(struct, 1024, 128)
+        str .= "`n8 bytes, no fill: " qpx()
+        ToolTip, % str
+        
+        MsgBox, % str
+        Return
+    }
+
     assignment()
     {
         ; Assignment performance test from fastest to slowest
